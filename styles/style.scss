@@ -1,0 +1,32 @@
+$dark: #101010;
+$blue: #1d3c6e;
+$yellow: #f6bf2b;
+
+$titles: "Fira Sans Condensed", sans-serif;
+
+$text: "Fira Sans", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#welcome {
+  background-color: $blue;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+
+  .saudation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h1 {
+      font-family: $titles;
+      font-weight: 900;
+      font-size: 4em;
+      color: #fff;
+    }
+  }
+}
