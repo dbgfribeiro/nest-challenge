@@ -5,6 +5,8 @@ $yellow: #f6bf2b;
 $titles: "Fira Sans Condensed", sans-serif;
 $text: "Fira Sans", sans-serif;
 
+$mobileBreakpoint: 820px;
+
 @mixin headings() {
   font-family: $titles;
   font-size: 2em;
@@ -13,6 +15,7 @@ $text: "Fira Sans", sans-serif;
 
 @mixin paragraphs() {
   font-family: $text;
+  font-weight: 100;
   font-size: 1em;
   line-height: 150%;
 }
@@ -22,6 +25,15 @@ $text: "Fira Sans", sans-serif;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 * {
@@ -39,6 +51,7 @@ header {
   top: 0;
   top: 80px;
   width: 100vw;
+  z-index: 1;
 
   nav {
     margin: 0 auto;
@@ -46,6 +59,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+    @media (max-width: $mobileBreakpoint) {
+      visibility: hidden;
+    }
 
     ul {
       display: flex;
@@ -101,7 +118,7 @@ header {
       display: flex;
       justify-content: space-between;
       transition: 0.3s;
-      & img {
+      img {
         &:last-child {
           right: 0;
           transform: scaleX(-1);
@@ -112,14 +129,6 @@ header {
     #star {
       animation: rotation 4s infinite linear;
       width: 40px;
-    }
-    @keyframes rotation {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(359deg);
-      }
     }
 
     h1 {
@@ -141,7 +150,6 @@ header {
 }
 
 #intro {
-  width: 100vw;
   height: 100vh;
   display: flex;
 
@@ -154,6 +162,9 @@ header {
     background-size: cover;
     width: 50%;
     height: 100%;
+    @media (max-width: $mobileBreakpoint) {
+      display: none;
+    }
   }
 
   .intro-container {
@@ -162,9 +173,14 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
+    @media (max-width: $mobileBreakpoint) {
+      width: 100%;
+    }
 
     .intro-content {
       padding: 80px;
+      overflow: hidden;
       h1 {
         font-family: $titles;
         font-weight: 900;
@@ -177,10 +193,20 @@ header {
       }
       p {
         @include paragraphs();
+        font-weight: 300;
         color: #fff;
         width: 75%;
         margin-top: 20px;
       }
+    }
+    img {
+      position: absolute;
+      bottom: 80px;
+      right: 80px;
+      width: 25px;
+      height: 25px;
+      animation: rotation 4s infinite linear;
+      width: 40px;
     }
   }
 }
@@ -188,5 +214,285 @@ header {
 #about {
   background-color: $blue;
   height: 100vh;
-  width: 100vw;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $mobileBreakpoint) {
+    display: block;
+    padding-top: 20vh;
+  }
+
+  .about-gallery {
+    width: 50%;
+    position: relative;
+    background-color: rgba(16, 16, 16, 0.5);
+    @media (max-width: $mobileBreakpoint) {
+      width: 80%;
+      margin: 0 auto;
+    }
+    img {
+      width: 42.5%;
+      filter: drop-shadow(-4px 4px 15px rgba(16, 16, 16, 0.5));
+      @include absolute-center();
+      &:nth-child(1) {
+        margin-top: -10%;
+        margin-left: -20%;
+      }
+      &:nth-child(2) {
+        margin-left: 22.5%;
+      }
+      &:nth-child(3) {
+        margin-top: 20%;
+      }
+    }
+  }
+
+  .about-info {
+    width: 50%;
+    @media (max-width: $mobileBreakpoint) {
+      width: 100%;
+      padding-top: 30vh;
+    }
+
+    .about-info-content {
+      margin: 0 80px;
+      color: #fff;
+
+      .about-title {
+        h3 {
+          @include headings();
+          font-size: 1em;
+          letter-spacing: 0.21em;
+          font-weight: 100;
+        }
+        h2 {
+          @include headings();
+          line-height: 100%;
+        }
+      }
+
+      p {
+        @include paragraphs();
+      }
+
+      .line {
+        width: 40%;
+        height: 3px;
+        background-color: $yellow;
+        float: right;
+        margin-top: 80px;
+      }
+    }
+  }
+}
+
+#work {
+  background-color: $blue;
+  padding: 80px 0 160px 0;
+
+  .work-content {
+    color: #fff;
+    margin: 0 80px;
+    position: relative;
+    .work-title {
+      h3 {
+        @include headings();
+        font-size: 1em;
+        letter-spacing: 0.21em;
+        font-weight: 100;
+      }
+      h2 {
+        @include headings();
+        line-height: 100%;
+      }
+    }
+    .work-tasks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px 0;
+      @media (max-width: $mobileBreakpoint) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .task {
+        width: 85%;
+        display: flex;
+        @media (max-width: $mobileBreakpoint) {
+          width: 100%;
+        }
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+
+        .task-info {
+          margin-left: 15px;
+          h4 {
+            @include headings();
+            font-size: 1em;
+            text-transform: uppercase;
+          }
+          p {
+            @include paragraphs();
+          }
+        }
+      }
+    }
+  }
+}
+
+#companies {
+  .companies-content {
+    margin: 80px;
+
+    .companies-title {
+      color: $blue;
+      h3 {
+        @include headings();
+        font-size: 1em;
+        letter-spacing: 0.21em;
+        font-weight: 100;
+      }
+      h2 {
+        @include headings();
+        line-height: 100%;
+      }
+    }
+    .logos-container {
+      height: fit-content;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 80px 80px 0 80px;
+      gap: 40px 0;
+      align-items: center;
+      justify-items: center;
+
+      @media (max-width: $mobileBreakpoint) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      img {
+        width: 125px;
+        max-height: 150px;
+        filter: grayscale(100%);
+        opacity: 0.75;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+          filter: none;
+          opacity: 1;
+        }
+
+        @media (max-width: $mobileBreakpoint) {
+        }
+      }
+    }
+  }
+}
+
+#events {
+  .brake {
+    margin: 160px 80px 80px 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    img {
+      margin: 0 80px;
+      &:last-child {
+        transform: scaleX(-1);
+      }
+      @media (max-width: $mobileBreakpoint) {
+        height: 50px;
+      }
+    }
+  }
+  .events-content {
+    margin: 0 80px 160px 80px;
+
+    .events-title {
+      color: $blue;
+      text-align: right;
+      h3 {
+        @include headings();
+        font-size: 1em;
+        letter-spacing: 0.21em;
+        font-weight: 100;
+      }
+      h2 {
+        @include headings();
+        line-height: 100%;
+      }
+    }
+
+    .events-container {
+      display: flex;
+      width: 100%;
+      overflow-x: scroll;
+      overflow-y: hidden;
+
+      ::-webkit-scrollbar {
+        height: 4px;
+        width: 4px;
+        background: gray;
+      }
+      ::-webkit-scrollbar-thumb:horizontal {
+        background: #000;
+        border-radius: 10px;
+      }
+
+      .event {
+        background: $blue;
+        display: flex;
+        position: relative;
+        align-items: center;
+        height: 250px;
+        margin-right: 25px;
+
+        .event-img {
+          width: 250px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .event-info {
+          width: 250px;
+          padding: 20px;
+          color: #fff;
+          position: relative;
+          h1 {
+            @include headings();
+            font-weight: 900;
+          }
+          h3 {
+            @include headings();
+            font-size: 1em;
+          }
+          p {
+            @include paragraphs();
+          }
+          img {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: -10px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 1;
+            &:hover {
+              animation: rotation 4s infinite linear;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  height: 20vh;
+  background: $blue;
 }

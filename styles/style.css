@@ -1,3 +1,25 @@
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +35,7 @@ header {
   top: 0;
   top: 80px;
   width: 100vw;
+  z-index: 1;
 }
 
 header nav {
@@ -27,6 +50,13 @@ header nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
+}
+
+@media (max-width: 820px) {
+  header nav {
+    visibility: hidden;
+  }
 }
 
 header nav ul {
@@ -125,28 +155,6 @@ header nav ul li a:hover::after {
   width: 40px;
 }
 
-@-webkit-keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-
-@keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-
 #welcome .saudation h1 {
   position: absolute;
   left: 50%;
@@ -173,7 +181,6 @@ header nav ul li a:hover::after {
 }
 
 #intro {
-  width: 100vw;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,6 +195,12 @@ header nav ul li a:hover::after {
   height: 100%;
 }
 
+@media (max-width: 820px) {
+  #intro .intro-img {
+    display: none;
+  }
+}
+
 #intro .intro-container {
   background-color: #1d3c6e;
   width: 50%;
@@ -198,10 +211,18 @@ header nav ul li a:hover::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+}
+
+@media (max-width: 820px) {
+  #intro .intro-container {
+    width: 100%;
+  }
 }
 
 #intro .intro-container .intro-content {
   padding: 80px;
+  overflow: hidden;
 }
 
 #intro .intro-container .intro-content h1 {
@@ -218,16 +239,412 @@ header nav ul li a:hover::after {
 
 #intro .intro-container .intro-content p {
   font-family: "Fira Sans", sans-serif;
+  font-weight: 100;
   font-size: 1em;
   line-height: 150%;
+  font-weight: 300;
   color: #fff;
   width: 75%;
   margin-top: 20px;
 }
 
+#intro .intro-container img {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  width: 25px;
+  height: 25px;
+  -webkit-animation: rotation 4s infinite linear;
+          animation: rotation 4s infinite linear;
+  width: 40px;
+}
+
 #about {
   background-color: #1d3c6e;
   height: 100vh;
-  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 820px) {
+  #about {
+    display: block;
+    padding-top: 20vh;
+  }
+}
+
+#about .about-gallery {
+  width: 50%;
+  position: relative;
+  background-color: rgba(16, 16, 16, 0.5);
+}
+
+@media (max-width: 820px) {
+  #about .about-gallery {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+#about .about-gallery img {
+  width: 42.5%;
+  -webkit-filter: drop-shadow(-4px 4px 15px rgba(16, 16, 16, 0.5));
+          filter: drop-shadow(-4px 4px 15px rgba(16, 16, 16, 0.5));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#about .about-gallery img:nth-child(1) {
+  margin-top: -10%;
+  margin-left: -20%;
+}
+
+#about .about-gallery img:nth-child(2) {
+  margin-left: 22.5%;
+}
+
+#about .about-gallery img:nth-child(3) {
+  margin-top: 20%;
+}
+
+#about .about-info {
+  width: 50%;
+}
+
+@media (max-width: 820px) {
+  #about .about-info {
+    width: 100%;
+    padding-top: 30vh;
+  }
+}
+
+#about .about-info .about-info-content {
+  margin: 0 80px;
+  color: #fff;
+}
+
+#about .about-info .about-info-content .about-title h3 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  font-size: 1em;
+  letter-spacing: 0.21em;
+  font-weight: 100;
+}
+
+#about .about-info .about-info-content .about-title h2 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  line-height: 100%;
+}
+
+#about .about-info .about-info-content p {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 150%;
+}
+
+#about .about-info .about-info-content .line {
+  width: 40%;
+  height: 3px;
+  background-color: #f6bf2b;
+  float: right;
+  margin-top: 80px;
+}
+
+#work {
+  background-color: #1d3c6e;
+  padding: 80px 0 160px 0;
+}
+
+#work .work-content {
+  color: #fff;
+  margin: 0 80px;
+  position: relative;
+}
+
+#work .work-content .work-title h3 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  font-size: 1em;
+  letter-spacing: 0.21em;
+  font-weight: 100;
+}
+
+#work .work-content .work-title h2 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  line-height: 100%;
+}
+
+#work .work-content .work-tasks {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 50px 0;
+}
+
+@media (max-width: 820px) {
+  #work .work-content .work-tasks {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+#work .work-content .work-tasks .task {
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 820px) {
+  #work .work-content .work-tasks .task {
+    width: 100%;
+  }
+}
+
+#work .work-content .work-tasks .task img {
+  width: 20px;
+  height: 20px;
+}
+
+#work .work-content .work-tasks .task .task-info {
+  margin-left: 15px;
+}
+
+#work .work-content .work-tasks .task .task-info h4 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+#work .work-content .work-tasks .task .task-info p {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 150%;
+}
+
+#companies .companies-content {
+  margin: 80px;
+}
+
+#companies .companies-content .companies-title {
+  color: #1d3c6e;
+}
+
+#companies .companies-content .companies-title h3 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  font-size: 1em;
+  letter-spacing: 0.21em;
+  font-weight: 100;
+}
+
+#companies .companies-content .companies-title h2 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  line-height: 100%;
+}
+
+#companies .companies-content .logos-container {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  padding: 80px 80px 0 80px;
+  gap: 40px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+@media (max-width: 820px) {
+  #companies .companies-content .logos-container {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+#companies .companies-content .logos-container img {
+  width: 125px;
+  max-height: 150px;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  opacity: 0.75;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#companies .companies-content .logos-container img:hover {
+  -webkit-filter: none;
+          filter: none;
+  opacity: 1;
+}
+
+#events .brake {
+  margin: 160px 80px 80px 80px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#events .brake img {
+  margin: 0 80px;
+}
+
+#events .brake img:last-child {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+@media (max-width: 820px) {
+  #events .brake img {
+    height: 50px;
+  }
+}
+
+#events .events-content {
+  margin: 0 80px 160px 80px;
+}
+
+#events .events-content .events-title {
+  color: #1d3c6e;
+  text-align: right;
+}
+
+#events .events-content .events-title h3 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  font-size: 1em;
+  letter-spacing: 0.21em;
+  font-weight: 100;
+}
+
+#events .events-content .events-title h2 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  line-height: 100%;
+}
+
+#events .events-content .events-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+#events .events-content .events-container ::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+  background: gray;
+}
+
+#events .events-content .events-container ::-webkit-scrollbar-thumb:horizontal {
+  background: #000;
+  border-radius: 10px;
+}
+
+#events .events-content .events-container .event {
+  background: #1d3c6e;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 250px;
+  margin-right: 25px;
+}
+
+#events .events-content .events-container .event .event-img {
+  width: 250px;
+}
+
+#events .events-content .events-container .event .event-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#events .events-content .events-container .event .event-info {
+  width: 250px;
+  padding: 20px;
+  color: #fff;
+  position: relative;
+}
+
+#events .events-content .events-container .event .event-info h1 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  font-weight: 900;
+}
+
+#events .events-content .events-container .event .event-info h3 {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 2em;
+  line-height: 150%;
+  font-size: 1em;
+}
+
+#events .events-content .events-container .event .event-info p {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 150%;
+}
+
+#events .events-content .events-container .event .event-info img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#events .events-content .events-container .event .event-info img:hover {
+  -webkit-animation: rotation 4s infinite linear;
+          animation: rotation 4s infinite linear;
+}
+
+footer {
+  height: 20vh;
+  background: #1d3c6e;
 }
 /*# sourceMappingURL=style.css.map */
