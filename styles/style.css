@@ -1,27 +1,233 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  top: 80px;
+  width: 100vw;
+}
+
+header nav {
+  margin: 0 auto;
+  padding: 0 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header nav ul li {
+  list-style: none;
+  margin-left: 30px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  position: relative;
+}
+
+header nav ul li a:hover {
+  opacity: 0.5;
+}
+
+header nav ul li a::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 3px;
+  top: 100%;
+  left: 0;
+  background: #f6bf2b;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+header nav ul li a:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
 
 #welcome {
   background-color: #1d3c6e;
-  overflow: hidden;
   width: 100vw;
   height: 100vh;
 }
 
 #welcome .saudation {
   position: absolute;
-  top: 50%;
   left: 50%;
+  top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  display: none;
+}
+
+#welcome .saudation .braces {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 115px;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#welcome .saudation .braces img:last-child {
+  right: 0;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+#welcome .saudation #star {
+  -webkit-animation: rotation 4s infinite linear;
+          animation: rotation 4s infinite linear;
+  width: 40px;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
 }
 
 #welcome .saudation h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 900;
+  font-size: 6em;
+  color: #fff;
+  display: none;
+}
+
+#welcome #arrow {
+  display: none;
+  padding: 5px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 95%;
+}
+
+#intro {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#intro .intro-img {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(29, 60, 110, 0.5)), to(rgba(29, 60, 110, 0.5))), url(../assets/homeimg.png);
+  background-image: linear-gradient(rgba(29, 60, 110, 0.5), rgba(29, 60, 110, 0.5)), url(../assets/homeimg.png);
+  background-size: cover;
+  width: 50%;
+  height: 100%;
+}
+
+#intro .intro-container {
+  background-color: #1d3c6e;
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#intro .intro-container .intro-content {
+  padding: 80px;
+}
+
+#intro .intro-container .intro-content h1 {
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 900;
   font-size: 4em;
+  line-height: 100%;
   color: #fff;
+}
+
+#intro .intro-container .intro-content h1 #nest {
+  color: #f6bf2b;
+}
+
+#intro .intro-container .intro-content p {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1em;
+  line-height: 150%;
+  color: #fff;
+  width: 75%;
+  margin-top: 20px;
+}
+
+#about {
+  background-color: #1d3c6e;
+  height: 100vh;
+  width: 100vw;
 }
 /*# sourceMappingURL=style.css.map */

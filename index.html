@@ -10,20 +10,62 @@
         href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@700;900&family=Fira+Sans:wght@100;300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Nest Collective</title>
 </head>
 
 <body>
     <header>
+        <nav>
+            <a href="index.html"><img src="assets/nest_logo.svg" alt="nest_logo"></a>
+            <ul>
+                <li><a href="">ABOUT</a></li>
+                <li><a href="">COMPANIES</a></li>
+                <li><a href="">EVENTS</a></li>
+                <li><a href="">CONTACT</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
         <section id="welcome">
             <div class="saudation">
-                <h1>OLÁ</h1>
+                <div class="braces">
+                    <img src="assets/brace.svg" alt="curly-brace">
+                    <img src="assets/brace.svg" alt="curly-brace">
+                </div>
+                <img src="assets/star.svg" alt="star" id="star">
+                <h1></h1>
+            </div>
+
+            <a href="index.html#intro" id="arrow"><img src="assets/arrow.svg" alt="arrow"></a>
+        </section>
+
+        <section id="intro">
+            <div class="intro-img">
+            </div>
+            <div class="intro-container">
+                <div class="intro-content">
+                    <h1>WE ARE
+                        <span id="nest">NEST</span>
+                        <br>
+                        COLLECTIVE
+                    </h1>
+                    <p>Pellentesque laoreet cursus aliquam tortor diam nec dictumst vitae. Morbi feugiat sem congue at
+                        cursus cras.</p>
+                </div>
             </div>
         </section>
+
+        <section id="about">
+
+        </section>
     </main>
+
     <footer></footer>
+
+    <script src="js/saudation.js"></script>
+    <script src="js/navbar.js"></script>
 </body>
 
 </html>
