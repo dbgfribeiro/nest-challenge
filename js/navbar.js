@@ -1,15 +1,9 @@
-$("nav").hide();
-
 $(window).scroll(function () {
   if (start()) {
-    $("nav").fadeIn();
+    $("header").fadeIn(300);
 
     $("#welcome").fadeOut();
     $("body").css("overflow", "visible");
-  }
-
-  if ($("#welcome").css("display") == "none") {
-    console.log("escondeu");
   }
 });
 
@@ -20,3 +14,8 @@ function start() {
 
   return elemTop <= docViewBottom;
 }
+
+//menu
+$(".menu-container a").click(function () {
+  $(".menu input").prop("checked", false);
+});

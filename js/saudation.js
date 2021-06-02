@@ -29,3 +29,15 @@ setInterval(function () {
       .animate({ marginTop: "+=" + "10px" }, 300);
   }
 }, 4000);
+
+/*toggle footer words*/
+farewells = ["THANKS", "GRACIAS", "OBRIGADO"];
+countf = -1;
+setInterval(function () {
+  countf++;
+  $(".footer-top h1").fadeOut(200, function () {
+    $(this)
+      .text(farewells[countf % farewells.length])
+      .fadeIn(400);
+  });
+}, 2000);

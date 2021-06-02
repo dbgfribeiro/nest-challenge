@@ -52,6 +52,10 @@ header {
   top: 80px;
   width: 100vw;
   z-index: 1;
+  display: none;
+  @media (max-width: $mobileBreakpoint) {
+    top: 0;
+  }
 
   nav {
     margin: 0 auto;
@@ -96,6 +100,87 @@ header {
             transform: scaleX(1);
             transform-origin: left;
           }
+        }
+      }
+    }
+  }
+
+  .menu {
+    z-index: 2;
+    top: 20px;
+    right: 20px;
+    position: fixed;
+    display: none;
+    @media (max-width: $mobileBreakpoint) {
+      display: block;
+    }
+
+    input {
+      display: block;
+      width: 33px;
+      height: 32px;
+      position: absolute;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0;
+      &:checked ~ .menu-container {
+        opacity: 100;
+        transform: none;
+      }
+      &:checked ~ span:nth-child(2) {
+        transform: rotate(45deg);
+        top: 5px;
+      }
+      &:checked ~ span:nth-child(3) {
+        display: none;
+      }
+      &:checked ~ span:nth-child(4) {
+        transform: rotate(-45deg);
+        bottom: 5px;
+      }
+    }
+
+    span {
+      display: block;
+      width: 33px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+      background: $yellow;
+      border-radius: 5px;
+      z-index: 1;
+
+      transition: 0.3s;
+    }
+
+    .menu-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      padding: 160px 40px;
+      background: $blue;
+      list-style: none;
+      opacity: 0;
+      transform: translate(-100%, 0);
+      transition: 0.5s;
+      user-select: none;
+
+      li {
+        padding: 10px 0;
+      }
+      a {
+        text-decoration: none;
+        text-align: left;
+        color: #ebebeb;
+        font-size: 3em;
+        transition: 0.5s;
+        @include headings();
+        font-weight: 900;
+        &:hover {
+          color: transparent;
+          -webkit-text-stroke: 1px #ebebeb;
         }
       }
     }
@@ -181,6 +266,9 @@ header {
     .intro-content {
       padding: 80px;
       overflow: hidden;
+      @media (max-width: $mobileBreakpoint) {
+        padding: 40px;
+      }
       h1 {
         font-family: $titles;
         font-weight: 900;
@@ -207,6 +295,10 @@ header {
       height: 25px;
       animation: rotation 4s infinite linear;
       width: 40px;
+      @media (max-width: $mobileBreakpoint) {
+        bottom: 40px;
+        right: 40px;
+      }
     }
   }
 }
@@ -227,7 +319,7 @@ header {
     position: relative;
     background-color: rgba(16, 16, 16, 0.5);
     @media (max-width: $mobileBreakpoint) {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
     }
     img {
@@ -257,6 +349,9 @@ header {
     .about-info-content {
       margin: 0 80px;
       color: #fff;
+      @media (max-width: $mobileBreakpoint) {
+        margin: 0 40px;
+      }
 
       .about-title {
         h3 {
@@ -294,6 +389,10 @@ header {
     color: #fff;
     margin: 0 80px;
     position: relative;
+    @media (max-width: $mobileBreakpoint) {
+      margin: 0 40px;
+    }
+
     .work-title {
       h3 {
         @include headings();
@@ -344,7 +443,10 @@ header {
 
 #companies {
   .companies-content {
-    margin: 80px;
+    margin: 160px 80px;
+    @media (max-width: $mobileBreakpoint) {
+      margin: 80px 40px;
+    }
 
     .companies-title {
       color: $blue;
@@ -370,7 +472,8 @@ header {
       justify-items: center;
 
       @media (max-width: $mobileBreakpoint) {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
       }
 
       img {
@@ -398,6 +501,9 @@ header {
     text-align: center;
     display: flex;
     justify-content: center;
+    @media (max-width: $mobileBreakpoint) {
+      margin: 80px 40px;
+    }
     img {
       margin: 0 80px;
       &:last-child {
@@ -410,6 +516,9 @@ header {
   }
   .events-content {
     margin: 0 80px 160px 80px;
+    @media (max-width: $mobileBreakpoint) {
+      margin: 0 40px 160px;
+    }
 
     .events-title {
       color: $blue;
@@ -432,16 +541,6 @@ header {
       overflow-x: scroll;
       overflow-y: hidden;
 
-      ::-webkit-scrollbar {
-        height: 4px;
-        width: 4px;
-        background: gray;
-      }
-      ::-webkit-scrollbar-thumb:horizontal {
-        background: #000;
-        border-radius: 10px;
-      }
-
       .event {
         background: $blue;
         display: flex;
@@ -449,9 +548,17 @@ header {
         align-items: center;
         height: 250px;
         margin-right: 25px;
+        @media (max-width: $mobileBreakpoint) {
+          display: block;
+          height: 400px;
+        }
 
         .event-img {
           width: 250px;
+          @media (max-width: $mobileBreakpoint) {
+            width: 100%;
+            height: 50%;
+          }
           img {
             width: 100%;
             height: 100%;
@@ -481,9 +588,11 @@ header {
             top: -10px;
             right: 20px;
             cursor: pointer;
-            z-index: 1;
             &:hover {
               animation: rotation 4s infinite linear;
+            }
+            @media (max-width: $mobileBreakpoint) {
+              top: 20px;
             }
           }
         }
@@ -493,6 +602,69 @@ header {
 }
 
 footer {
-  height: 20vh;
   background: $blue;
+  padding: 40px 80px 80px 80px;
+
+  .footer-top {
+    position: relative;
+    padding: 80px;
+    border-bottom: 3px solid #fff;
+
+    .footer-braces {
+      @include absolute-center();
+      width: 350px;
+      height: 75px;
+      display: flex;
+      justify-content: space-between;
+      @media (max-width: $mobileBreakpoint) {
+        width: 250px;
+        height: 50px;
+      }
+      img {
+        &:last-child {
+          right: 0;
+          transform: scaleX(-1);
+        }
+      }
+    }
+    h1 {
+      @include absolute-center();
+      text-align: center;
+      font-family: $titles;
+      font-weight: 900;
+      font-size: 4em;
+      color: #fff;
+      @media (max-width: $mobileBreakpoint) {
+        font-size: 3em;
+      }
+    }
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    @media (max-width: $mobileBreakpoint) {
+      display: block;
+      text-align: center;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+      padding: 20px 0;
+      & > * {
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+        margin: 20px 0;
+      }
+    }
+    p {
+      @include paragraphs();
+      color: #fff;
+      font-weight: 300;
+    }
+    .social {
+      img {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
 }
