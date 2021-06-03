@@ -712,9 +712,39 @@ header .menu .menu-container a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-bottom: 40px;
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
+}
+
+#events .events-content .events-container::-webkit-scrollbar {
+  height: 15px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#events .events-content .events-container::-webkit-scrollbar-track-piece {
+  background: #f1f1f1;
+  text-align: center;
+}
+
+#events .events-content .events-container::-webkit-scrollbar-thumb {
+  background: #1d3c6e;
+}
+
+#events .events-content .events-container::-webkit-scrollbar-button:end:increment {
+  width: 10%;
+  display: block;
+  background: transparent;
+}
+
+#events .events-content .events-container::-webkit-scrollbar-button:start:increment {
+  width: 10%;
+  display: block;
+  background: transparent;
 }
 
 #events .events-content .events-container .event {

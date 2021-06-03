@@ -537,9 +537,33 @@ header {
 
     .events-container {
       display: flex;
+      padding-bottom: 40px;
       width: 100%;
       overflow-x: scroll;
       overflow-y: hidden;
+
+      &::-webkit-scrollbar {
+        height: 15px;
+        display: flex;
+        justify-content: center;
+      }
+      &::-webkit-scrollbar-track-piece {
+        background: #f1f1f1;
+        text-align: center;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: $blue;
+      }
+      &::-webkit-scrollbar-button:end:increment {
+        width: 10%;
+        display: block;
+        background: transparent;
+      }
+      &::-webkit-scrollbar-button:start:increment {
+        width: 10%;
+        display: block;
+        background: transparent;
+      }
 
       .event {
         background: $blue;
